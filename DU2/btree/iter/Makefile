@@ -5,7 +5,7 @@ FILES=btree.c ../btree.c stack.c ../test_util.c ../test.c
 .PHONY: test clean
 
 test: $(FILES)
-	$(CC) $(CFLAGS) -o $@ $(FILES)
+	$(CC) $(CFLAGS) -o $@ $(FILES) -g
 
 clean:
 	rm -f test

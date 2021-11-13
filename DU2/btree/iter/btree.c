@@ -40,10 +40,10 @@ bool bst_search(bst_node_t *tree, char key, int *value) {
     bst_node_t *node;
     node = tree;
     while(node != NULL){
-      if(node->value == value){
+      if(node->value == *value){
         return true;
       }
-      else if(value > node->value){
+      else if(*value > node->value){
         node = node->right;
       }
       else{
@@ -76,7 +76,7 @@ void bst_insert(bst_node_t **tree, char key, int value) {
     *tree = node;
     return;
   }
-  node = &tree;
+  node = *tree;
   while(true){
     if(node->key == key){
       node->value = value;
@@ -127,7 +127,7 @@ void bst_insert(bst_node_t **tree, char key, int value) {
  * Funkciu implementujte iteratívne bez použitia vlastných pomocných funkcií.
  */
 void bst_replace_by_rightmost(bst_node_t *target, bst_node_t **tree) {
-  bst_node_t *node = &tree;
+  bst_node_t *node = *tree;
   while(node->right != NULL){
     node = node->right;
   }
@@ -149,7 +149,7 @@ void bst_replace_by_rightmost(bst_node_t *target, bst_node_t **tree) {
  * použitia vlastných pomocných funkcií.
  */
 void bst_delete(bst_node_t **tree, char key) {
-  bst_node_t *node = &tree;
+  bst_node_t *node = *tree;
   bst_node_t *prev = NULL;
   int way; //0 = left, 1 = right
   while(node->key != key){
