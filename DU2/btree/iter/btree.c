@@ -306,7 +306,7 @@ void bst_inorder(bst_node_t *tree) {
     tree = stack_bst_top(&stack);
     stack_bst_pop(&stack);
     bst_print_node(tree);
-    bst_leftmost_inorder(tree, &stack);
+    bst_leftmost_inorder(tree->right, &stack);
   }
 }
 
@@ -350,7 +350,7 @@ void bst_postorder(bst_node_t *tree) {
     stack_bool_pop(&bool_stack);
     if(fromLeft){
       stack_bool_push(&bool_stack, false);
-      bst_leftmost_postorder(tree, &stack, &bool_stack);
+      bst_leftmost_postorder(tree->right, &stack, &bool_stack);
     }
     else{
       stack_bst_pop(&stack);
