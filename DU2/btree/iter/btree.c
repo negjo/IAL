@@ -40,10 +40,12 @@ bool bst_search(bst_node_t *tree, char key, int *value) {
     bst_node_t *node;
     node = tree;
     while(node != NULL){
-      if(node->value == *value){
+      //printf("%d %d\n", node->value, *value);
+      if(node->key == key){
+        *value = node->value;
         return true;
       }
-      else if(*value > node->value){
+      else if(key > node->key){
         node = node->right;
       }
       else{
@@ -153,6 +155,7 @@ void bst_delete(bst_node_t **tree, char key) {
   bst_node_t *prev = NULL;
   int way; //0 = left, 1 = right
   while(node->key != key){
+    printf("yey");
     prev = node;
     if(key < node->key){
       way = 0;
