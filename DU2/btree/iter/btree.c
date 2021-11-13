@@ -67,7 +67,7 @@ bool bst_search(bst_node_t *tree, char key, int *value) {
  */
 void bst_insert(bst_node_t **tree, char key, int value) {
   bst_node_t *node;
-  if(tree == NULL){
+  if(*tree == NULL){
     node = malloc(sizeof(bst_node_t));
     node->key = key;
     node->value = value;
@@ -213,7 +213,7 @@ void bst_dispose(bst_node_t **tree) {
   stack_bst_t stack;
   stack_bst_init(&stack);
   do{
-    if(*tree != NULL){
+    if(*tree == NULL){
       if(!stack_bst_empty(&stack)){
         *tree = stack_bst_top(&stack);
         stack_bst_pop(&stack);
